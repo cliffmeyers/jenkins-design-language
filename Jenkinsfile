@@ -3,7 +3,7 @@ node {
         checkout scm
         def environment  = docker.build 'cloudbees-node'
 
-        environment.inside {
+        environment.inside('-u 1000:50') {
             stage "Checkout and build deps"
                 sh "npm install"
 
