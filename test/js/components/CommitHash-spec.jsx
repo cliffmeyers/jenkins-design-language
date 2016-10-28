@@ -27,7 +27,7 @@ describe("CommitHash", () => {
 
         assert.isTrue(wrapper.is('code'));
         assert.equal(wrapper.text().length, 7);
-        assert.equal(wrapper.text(), '676b757');
+        assert.equal(wrapper.text(), '676b75');
 
     });
 
