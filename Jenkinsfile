@@ -11,8 +11,12 @@ node {
                 sh "./node_modules/.bin/flow"
 
             stage "Test and validate"
-                sh "npm install gulp-cli && ./node_modules/.bin/gulp"
-                step([$class: 'JUnitResultArchiver', testResults: 'reports/**/*.xml'])
+                try {
+                    sh "npm install gulp-cli && ./node_modules/.bin/gulp"
+                } catch (err) {
+                    step([$class: 'JUnitResultArchiver', testResults: 'reports/**/*.xml'])
+                    throw err
+                }
         }
 
     stage "Cleanup"
